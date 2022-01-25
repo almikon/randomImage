@@ -1,14 +1,14 @@
 let blob;
 
 async function getPhoto() {
-    let img = document.getElementById("randomImage");
+    let img = document.getElementsByClassName("randomImage");
     //img.src = "https://source.unsplash.com/random?sig=" + Math.random();
 
     let response = await fetch('https://source.unsplash.com/random');
     blob = await response.blob();
     img.src = URL.createObjectURL(blob);
-    document.getElementById("saveButton").style.visibility = "visible";
-    document.getElementById("getImageButton").textContent = "Get another random image";
+    document.getElementsByClassName("hidden").style.visibility = "visible";
+    document.getElementsByClassName("ImageButton").textContent = "Get another random image";
   }
 
   function saveBlobAsFile(blob, fileName) {

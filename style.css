@@ -1,0 +1,9 @@
+body{
+    background-color: black;
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: 9fr 1fr;
+}
+.hidden{
+    visibility: hidden;
+}
