@@ -3,23 +3,20 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Random Image from The UnsplashPhoto</title>
   <script src="index.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div id="imgWrapper">
-    <img id="randomImage" src="">
-    <div class="buttons">
-    <button id="getImageButton" class="glow-on-hover" type="button" onclick="getPhoto()">Get random image</button>
-    <button id="saveButton" class="glow-on-hover" type="button" onclick="saveBlobAsFile(blob)">Save this fancy image</button>
-    </div>  
-  </div>
+  <div class="imgWrapper">
+    <img class="randomImage" src="">
 
+    <div class="buttons">
+      <button class="button static" type="button" onclick="getPhoto()">Get random image</button>
+    </div>
+  </div>
 
 </body>
 

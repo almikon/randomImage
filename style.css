@@ -1,21 +1,18 @@
 body{
-    background-color: black;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 90% auto;
+    background-color: black; 
+    display:flex; 
+    justify-content:center;
 }
-.hidden{
-    visibility: hidden;
+.static {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .randomImage{
-    max-height: 90vh;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-.buttons{
-    display: flex;
-    justify-content: space-around;
+  max-height: auto;
+  max-width: 100%;
 }
 .button{
   align-items: center;
@@ -25,19 +22,14 @@ body{
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
   color: #FFFFFF;
-  display: flex;
+  
   font-family: Phantomsans, sans-serif;
   font-size: 20px;
-  justify-content: center;
+  
   line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 19px 24px;
+  width: 140px;
+  height: 50px;
   text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -46,9 +38,9 @@ body{
   outline: 0;
 }
 
-/*@media (min-width: 768px) {
-  .button-63 {
+@media (min-width: 768px) {
+  .button {
     font-size: 24px;
     min-width: 196px;
   }
-}*/
+}
