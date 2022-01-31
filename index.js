@@ -9,7 +9,8 @@ async function getPhoto() {
   //document.querySelector('.hidden').style.visibility = 'visible';
   //document.getElementsByClassName("hidden").style.visibility = "visible";
   document.querySelector('.button').textContent = "Get another random image";
-  document.querySelector('.button').style.cssText = "top: 0; left: auto";
+  document.querySelector('.static').style.cssText = "position: float; top:0; right:0;";
+  document.getElementByClass('imgWrapper').appendChild(document.getElementByClass('button'))
 }
 
 function saveBlobAsFile(blob, fileName) {
