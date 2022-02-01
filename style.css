@@ -32,7 +32,7 @@ body{
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
+}/*this one should appear after click*/
 #button__getImage{
   position: absolute;
   left: 100px;
@@ -42,9 +42,3 @@ body{
 .button:hover {
   outline: 0;
 }*/
-@media (min-width: 768px) {
-  .button {
-    font-size: 24px;
-    min-width: 196px;
-  }
-}
