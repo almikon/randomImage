@@ -6,13 +6,27 @@ async function getPhoto() {
   let response = await fetch('https://source.unsplash.com/random');
   blob = await response.blob();
   img.src = URL.createObjectURL(blob);
-  //document.querySelector('.hidden').style.visibility = 'visible';
-  //document.getElementsByClassName("hidden").style.visibility = "visible";
-  document.querySelector('#button__getImage').textContent = "Get another random image";
-  
-  document.querySelector('#imgWrapper').appendChild(document.querySelector('#button__getImage'))
-  document.querySelector('#button__getImage').style.position = "float";;
+  let imgWrapper = document.querySelector('.imgWrapper');
+  let buttonGetPhoto = document.querySelector('.button');
+  imgWrapper.append(buttonGetPhoto);
+  buttonGetPhoto.textContent = "Get another random image";
+  buttonGetPhoto.classList.remove('center');
+  buttonGetPhoto.classList.add('button__getImage'); 
+
+  //document.querySelector('#button__getImage').style.position = "float";;
   //document.elm.style.position = "float";
+  
+  let button = document.createElement("button");
+  button.classList.add('button', 'button__saveImage');
+  button.innerHTML = "Save this fancy image";
+  button.addEventListener ("click", () => saveBlobAsFile(blob));
+  imgWrapper.append(button);
+
+  let shareButton = document.createElement("button");
+  shareButton.classList.add('button', 'shareButton');
+  shareButton.innerHTML = "Share this fancy image";
+  //shareButton.addEventListener ();
+  imgWrapper.append(shareButton);
 
 }
 
@@ -33,4 +47,4 @@ function saveBlobAsFile(blob, fileName) {
   reader.readAsDataURL(blob);
 }
 
-//<button class="button hidden" type="button" onclick="saveBlobAsFile(blob)">Save this fancy image</button>
+//<button class="button hidden" type="button" onclick=""></button>

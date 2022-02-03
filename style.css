@@ -1,12 +1,12 @@
 body{
     background-color: black; 
-    margin: 0;
-    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
-.randomImage{
+/*.randomImage{
   max-height: auto;
   max-width: 100%;
-}
+}*/
 .imgWrapper{
   display: inline-block;
   position: relative;
@@ -26,19 +26,29 @@ body{
   text-decoration: none;
   cursor: pointer;
 }
-.static {
+.center {
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }/*this one should appear after click*/
-#button__getImage{
+.button__getImage{
   position: absolute;
-  left: 100px;
-  top: 25px;
+  left: 0px;
+  top: 0px;
 }/*
 .button:active,
 .button:hover {
   outline: 0;
 }*/
+.button__saveImage{
+  position: absolute;
+  left: 145px;
+  top: 0px;
+}
+.shareButton{
+  position: absolute;
+  left: 290px;
+  top: 0px;
+}

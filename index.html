@@ -4,18 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Random Image from The UnsplashPhoto</title>
-  <script src="index.js"></script>
+  <script src="index.js" defer></script>
   <link rel="stylesheet" href="style.css">
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v12.0" nonce="zgrJozLX"></script>
 </head>
 
 <body>
-  <button id="button__getImage" class="button static" type="button" onclick="getPhoto()">Get random image</button>
-  <div id="imgWrapper" class="imgWrapper">
+  
+  <button class="button center" type="button" onclick="getPhoto()">Get random image</button>
+  <div class="imgWrapper">
     <img class="randomImage" src="">
 
     
   </div>
-
+  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
 </body>
 
 </html>
