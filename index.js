@@ -12,23 +12,26 @@ async function getPhoto() {
   buttonGetPhoto.textContent = "Get another random image";
   buttonGetPhoto.classList.remove('center');
   buttonGetPhoto.classList.add('button__getImage'); 
-
-  //document.querySelector('#button__getImage').style.position = "float";;
-  //document.elm.style.position = "float";
   
   let button = document.createElement("button");
   button.classList.add('button', 'button__saveImage');
   button.innerHTML = "Save this fancy image";
-  button.addEventListener ("click", () => saveBlobAsFile(blob));
+  button.addEventListener ("click", ()=>saveBlobAsFile(blob));
   imgWrapper.append(button);
 
   let shareButton = document.createElement("button");
   shareButton.classList.add('button', 'shareButton');
   shareButton.innerHTML = "Share this fancy image";
-  //shareButton.addEventListener ();
+  shareButton.addEventListener ("click", ()=>showModalContent());
   imgWrapper.append(shareButton);
 
 }
+
+function showModalContent(){
+  modal.style.display = "block";
+  FB.XFBML.parse();
+}
+
 
 function saveBlobAsFile(blob, fileName) {
   var reader = new FileReader();
@@ -47,4 +50,20 @@ function saveBlobAsFile(blob, fileName) {
   reader.readAsDataURL(blob);
 }
 
-//<button class="button hidden" type="button" onclick=""></button>
+// Get the modal
+let modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
