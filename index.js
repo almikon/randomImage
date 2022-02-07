@@ -1,35 +1,56 @@
 let blob;
+let response;
 
 async function getPhoto() {
   let img = document.querySelector('.randomImage');
 
-  let response = await fetch('https://source.unsplash.com/random');
+  response = await fetch('https://source.unsplash.com/random');
   blob = await response.blob();
   img.src = URL.createObjectURL(blob);
   let imgWrapper = document.querySelector('.imgWrapper');
   let buttonGetPhoto = document.querySelector('.button');
   imgWrapper.append(buttonGetPhoto);
-  buttonGetPhoto.textContent = "Get another random image";
+  buttonGetPhoto.textContent = "Get another Image";
   buttonGetPhoto.classList.remove('center');
   buttonGetPhoto.classList.add('button__getImage'); 
   
   let button = document.createElement("button");
   button.classList.add('button', 'button__saveImage');
-  button.innerHTML = "Save this fancy image";
+  button.innerHTML = "Save";
   button.addEventListener ("click", ()=>saveBlobAsFile(blob));
   imgWrapper.append(button);
 
   let shareButton = document.createElement("button");
   shareButton.classList.add('button', 'shareButton');
-  shareButton.innerHTML = "Share this fancy image";
+  shareButton.innerHTML = "Share";
   shareButton.addEventListener ("click", ()=>showModalContent());
   imgWrapper.append(shareButton);
-
+  
 }
 
 function showModalContent(){
+  let modalContent = document.querySelector('.modal-content');
+
   modal.style.display = "block";
-  FB.XFBML.parse();
+
+  let sharelinkFb = document.createElement("a");
+  sharelinkFb.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
+  sharelinkFb.target = "_blank";
+  sharelinkFb.appendChild(document.getElementById('fbIcon'));
+  modalContent.append(sharelinkFb);
+
+  let sharelinkwa = document.createElement("a");
+  sharelinkwa.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
+  sharelinkwa.target = "_blank";
+  sharelinkwa.appendChild(document.getElementById('waIcon'));
+  modalContent.append(sharelinkwa);
+
+  let sharelinkTg = document.createElement("a");
+  sharelinkTg.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
+  sharelinkTg.target = "_blank";
+  sharelinkTg.appendChild(document.getElementById('tgIcon'));
+  modalContent.append(sharelinkTg);
+
 }
 
 
