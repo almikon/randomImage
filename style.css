@@ -1,15 +1,17 @@
 body{
     background-color: black; 
-    margin-left: auto;
-    margin-right: auto;
 }
-/*.randomImage{
-  max-height: auto;
-  max-width: 100%;
-}*/
+.randomImage{ 
+  position: relative;
+  z-index: 1;
+}
 .imgWrapper{
   display: inline-block;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 .button{
   background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
@@ -25,12 +27,12 @@ body{
   height: 50px;
   text-decoration: none;
   cursor: pointer;
+  z-index: 999999;
 }
 .center {
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }/*this one should appear after click*/
 .button__getImage{
@@ -56,7 +58,7 @@ body{
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 3; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -68,11 +70,14 @@ body{
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1e8e8;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: fit-content; /* Could be more or less, depending on screen size */
+  border-radius: 8px;
+  width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -82,17 +87,25 @@ body{
   font-size: 28px;
   font-weight: bold;
 }
-
+.share__buttons{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-
+.share__text{
+  font-size: 30px;
+}
 .icon{
   width: 48px;
   height: 48px;
+  margin: 10px;
 }
 
 .icon:hover{

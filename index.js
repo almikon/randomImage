@@ -3,10 +3,13 @@ let response;
 
 async function getPhoto() {
   let img = document.querySelector('.randomImage');
-
+  
   response = await fetch('https://source.unsplash.com/random');
+  let imglink = (response['url'].substring(0, response['url'].indexOf('?')));
+
   blob = await response.blob();
   img.src = URL.createObjectURL(blob);
+  
   let imgWrapper = document.querySelector('.imgWrapper');
   let buttonGetPhoto = document.querySelector('.button');
   imgWrapper.append(buttonGetPhoto);
@@ -29,7 +32,7 @@ async function getPhoto() {
 }
 
 function showModalContent(){
-  let modalContent = document.querySelector('.modal-content');
+  let shareButtons = document.querySelector('.share__buttons');
 
   modal.style.display = "block";
 
@@ -37,19 +40,19 @@ function showModalContent(){
   sharelinkFb.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
   sharelinkFb.target = "_blank";
   sharelinkFb.appendChild(document.getElementById('fbIcon'));
-  modalContent.append(sharelinkFb);
+  shareButtons.append(sharelinkFb);
 
   let sharelinkwa = document.createElement("a");
   sharelinkwa.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
   sharelinkwa.target = "_blank";
   sharelinkwa.appendChild(document.getElementById('waIcon'));
-  modalContent.append(sharelinkwa);
+  shareButtons.append(sharelinkwa);
 
   let sharelinkTg = document.createElement("a");
   sharelinkTg.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
   sharelinkTg.target = "_blank";
   sharelinkTg.appendChild(document.getElementById('tgIcon'));
-  modalContent.append(sharelinkTg);
+  shareButtons.append(sharelinkTg);
 
 }
 
