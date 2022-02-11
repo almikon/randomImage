@@ -1,17 +1,19 @@
 let blob;
 let response;
+let imglink
 
 async function getPhoto() {
   let img = document.querySelector('.randomImage');
   
   response = await fetch('https://source.unsplash.com/random');
   blob = await response.blob();
-  let imglink = (response['url'].substring(0, response['url'].indexOf('?')));
+  imglink = (response['url'].substring(0, response['url'].indexOf('?')));
   img.src = imglink+"?h=" + window.innerHeight;
   
   let imgWrapper = document.querySelector('.imgWrapper');
   let buttonGetPhoto = document.querySelector('.button');
   imgWrapper.append(buttonGetPhoto);
+  
   buttonGetPhoto.textContent = "Get another Image";
   buttonGetPhoto.classList.remove('center');
   buttonGetPhoto.classList.add('button__getImage'); 
@@ -36,19 +38,19 @@ function showModalContent(){
   modal.style.display = "block";
 
   let sharelinkFb = document.createElement("a");
-  sharelinkFb.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
+  sharelinkFb.href = "https://www.facebook.com/sharer.php?u=" + imglink;
   sharelinkFb.target = "_blank";
   sharelinkFb.appendChild(document.getElementById('fbIcon'));
   shareButtons.append(sharelinkFb);
 
   let sharelinkwa = document.createElement("a");
-  sharelinkwa.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
+  sharelinkwa.href = "whatsapp://send?text" + imglink;
   sharelinkwa.target = "_blank";
   sharelinkwa.appendChild(document.getElementById('waIcon'));
   shareButtons.append(sharelinkwa);
 
   let sharelinkTg = document.createElement("a");
-  sharelinkTg.href = "https://www.facebook.com/sharer/sharer.php?u=" + response.url;
+  sharelinkTg.href = "tg://msg_url?url=" + imglink;
   sharelinkTg.target = "_blank";
   sharelinkTg.appendChild(document.getElementById('tgIcon'));
   shareButtons.append(sharelinkTg);
