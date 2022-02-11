@@ -5,10 +5,9 @@ async function getPhoto() {
   let img = document.querySelector('.randomImage');
   
   response = await fetch('https://source.unsplash.com/random');
-  let imglink = (response['url'].substring(0, response['url'].indexOf('?')));
-
   blob = await response.blob();
-  img.src = URL.createObjectURL(blob);
+  let imglink = (response['url'].substring(0, response['url'].indexOf('?')));
+  img.src = imglink+"?h=" + window.innerHeight;
   
   let imgWrapper = document.querySelector('.imgWrapper');
   let buttonGetPhoto = document.querySelector('.button');
