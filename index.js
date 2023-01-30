@@ -26,37 +26,13 @@ async function getPhoto() {
 
   let shareButton = document.createElement("button");
   shareButton.classList.add('button', 'shareButton');
-  shareButton.innerHTML = "Share";
-  shareButton.addEventListener ("click", ()=>showModalContent());
+  shareButton.innerHTML = "Share via Telegram";
+  shareButton.addEventListener("click",()=>{
+    location.href="tg://msg_url?url=" + imglink;
+  })
   imgWrapper.append(shareButton);
   
 }
-
-function showModalContent(){
-  let shareButtons = document.querySelector('.share__buttons');
-
-  modal.style.display = "block";
-
-  let sharelinkFb = document.createElement("a");
-  sharelinkFb.href = "https://www.facebook.com/sharer.php?u=" + imglink;
-  sharelinkFb.target = "_blank";
-  sharelinkFb.appendChild(document.getElementById('fbIcon'));
-  shareButtons.append(sharelinkFb);
-
-  let sharelinkwa = document.createElement("a");
-  sharelinkwa.href = "whatsapp://send?text" + imglink;
-  sharelinkwa.target = "_blank";
-  sharelinkwa.appendChild(document.getElementById('waIcon'));
-  shareButtons.append(sharelinkwa);
-
-  let sharelinkTg = document.createElement("a");
-  sharelinkTg.href = "tg://msg_url?url=" + imglink;
-  sharelinkTg.target = "_blank";
-  sharelinkTg.appendChild(document.getElementById('tgIcon'));
-  shareButtons.append(sharelinkTg);
-
-}
-
 
 function saveBlobAsFile(blob, fileName) {
   var reader = new FileReader();
@@ -65,7 +41,7 @@ function saveBlobAsFile(blob, fileName) {
     var base64 = reader.result;
     var link = document.createElement("a");
 
-    document.body.appendChild(link); // for Firefox
+    document.body.appendChild(link);
 
     link.setAttribute("href", base64);
     link.setAttribute("download", fileName);
@@ -73,22 +49,4 @@ function saveBlobAsFile(blob, fileName) {
   };
 
   reader.readAsDataURL(blob);
-}
-
-// Get the modal
-let modal = document.getElementById("myModal");
-
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
 }
